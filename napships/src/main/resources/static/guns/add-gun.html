@@ -13,7 +13,7 @@
 	<header th:replace="~{fragments/general::header}">
 		<nav class="navbar navbar-expand-lg navbar-light bg-info">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Navbar</a>
+				<a class="navbar-brand" href="../home.html">Napships</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
+							<a class="nav-link active" aria-current="page" href="../home.html">Home</a>
 						</li>
 					</ul>
 				</div>
@@ -31,24 +31,32 @@
 	</header>
 	<main class="container">
 		<h1>Add new Ship</h1>
-		<form th:object="${newShip}" th:action="@{/ships/new}" th:method="POST">
+		<form th:object="${newShip}" action="../home.html" method="get" th:action="@{/ships/new}" th:method="POST">
 			<div class="row">
 
 				<div class="col-auto g-3 mt-3 align-items-center">
 
 
 
-					<label for="gunNationInput" class="form-label">Ship Name</label>
-					<input type="text" class="form-control" id="gunNationInput" th:field="*{nation}">
+					<label for="shipNameInput" class="form-label">Ship Name</label>
+					<input type="text" class="form-control" id="shipNameInput" th:field="*{name}">
 					<label for="shipClassInput" class="form-label">Lead Ship</label>
 					<input type="text" class="form-control" id="shipClassInput" th:field="*{shipClass}">
+
 
 				</div>
 				<div class="col-auto g-3 align-items-center">
 					<label for="shipTypeInput" class="form-label">Ship Type</label>
-					<input type="text" class="form-control" id="shipTypeInput" th:field="*{shipType}">
+					<select th:field="*{shipType}" id="shipTypeInput" class="form-select" aria-label="ship type">
+						<option th:each="shipType : ${shipTypes}" th:value="${shipType.id}" th:text="${shipType.name}">Battleship</option>
+					</select>
 					<label for="shipDateInput" class="form-label">Date laid down</label>
 					<input type="date" class="form-control" id="shipDateInput" th:field="*{laidDownDate}">
+
+					<label for="shipNationInput" class="form-label">Nation</label>
+					<select th:field="*{nation}" id="shipNationInput" class="form-select" aria-label="nation">
+						<option th:each="nation : ${nations}" th:value="${nation.id}" th:text="${nation.name}">USA</option>
+					</select>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary mt-3">Submit</button>

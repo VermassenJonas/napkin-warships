@@ -14,10 +14,10 @@
 
 
 <body class="bg-light">
-	<header th:replace="~{fragments/general::header}">
+	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-light bg-info">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Navbar</a>
+				<a class="navbar-brand" href="#" th:href="@{/}">NapShips</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
@@ -26,70 +26,20 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
+							<a class="nav-link active" aria-current="page" href="./ships/ship-list.html"
+								th:href="@{/ships}">Ships</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								Dropdown
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+							<a class="nav-link active" aria-current="page" href="./guns/gun-list.html"
+								th:href="@{/guns}">Guns</a>
 						</li>
 					</ul>
-					<form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
 				</div>
 			</div>
 		</nav>
-
 	</header>
 	<div class="container">
-		<h1>Add new Ship</h1>
-		<form class="row g-3 align-items-center">
-			<div class="col-auto">
-				<label for="shipNameInput" class="form-label">Ship Name</label>
-			</div>
-			<div class="col-auto">
-				<input type="text" class="form-control" id="shipNameInput" placeholder="">
-			</div>
-			<div class="col-auto">
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</div>
-		</form>
-		<h1>Ship List</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Type</th>
-					<th scope="col">Name</th>
-					<th scope="col">Class</th>
-					<th scope="col">Launch Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="ship : ${shipList}" th:object="${ship}">
-					<td th:text="*{shipType}">Battleship</td>
-					<td th:text="*{name}">Missouri</td>
-					<td th:text="*{shipClass}">Iowa</td>
-					<td th:text="*{laidDownDate}">1942</td>
-				</tr>
-			</tbody>
-		</table>
+		
 	</div>
 	<footer>
 

@@ -24,7 +24,7 @@ public class ShipController {
 	@Autowired
 	private ShipTypeService shipTypeService;
 
-	@GetMapping
+	@GetMapping("")
 	public String getShipList(Model model) {
 		model.addAttribute("shipList", shipService.getAllShips());
 		return "ships/ship-list";

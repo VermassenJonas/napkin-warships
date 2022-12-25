@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 
 	@Autowired
 	private ShipService shipService;
 
-	@GetMapping
+	@GetMapping("")
 	public String getHome(Model model) {
 		model.addAttribute("shipList", shipService.getAllShips());
 		return "home";
