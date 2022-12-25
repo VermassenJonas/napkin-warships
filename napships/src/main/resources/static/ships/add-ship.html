@@ -47,12 +47,14 @@
 				</div>
 				<div class="col-auto g-3 align-items-center">
 					<label for="shipTypeInput" class="form-label">Ship Type</label>
-					<input type="text" class="form-control" id="shipTypeInput" th:field="*{shipType}">
+					<select th:field="*{shipType}" id="shipTypeInput" class="form-select" aria-label="ship type">
+						<option th:each="shipType : ${shipTypes}" th:value="${shipType.id}" th:text="${shipType.name}">Battleship</option>
+					</select>
 					<label for="shipDateInput" class="form-label">Date laid down</label>
 					<input type="date" class="form-control" id="shipDateInput" th:field="*{laidDownDate}">
 
 					<label for="shipNationInput" class="form-label">Nation</label>
-					<select th:field="*{nation}" id="shipNationInput" class="form-select" aria-label="Default select example">
+					<select th:field="*{nation}" id="shipNationInput" class="form-select" aria-label="nation">
 						<option th:each="nation : ${nations}" th:value="${nation.id}" th:text="${nation.name}">USA</option>
 					</select>
 				</div>

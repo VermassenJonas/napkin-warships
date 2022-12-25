@@ -14,5 +14,7 @@ import lombok.*;
 public class ShipType {
 
 	@Id
+	@GeneratedValue
+	private long id;
 	private String name;
 }

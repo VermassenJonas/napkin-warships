@@ -19,7 +19,7 @@ public class Ship {
 	private String shipClass;
 	private String name;
 	@ManyToOne
-	@JoinColumn(name = "ship_type_name")
+	@JoinColumn(name = "ship_type_id")
 	private ShipType shipType;
 	private LocalDate laidDownDate;
 

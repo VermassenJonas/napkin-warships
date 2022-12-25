@@ -3,6 +3,7 @@ package com.example.napships.controllers;
 import com.example.napships.models.Ship;
 import com.example.napships.services.NationService;
 import com.example.napships.services.ShipService;
+import com.example.napships.services.ShipTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class ShipController {
 	private ShipService shipService;
 	@Autowired
 	private NationService nationService;
+	@Autowired
+	private ShipTypeService shipTypeService;
 
 	@GetMapping
 	public String getShipList(Model model) {
@@ -31,6 +34,7 @@ public class ShipController {
 	public String getShipForm(Model model) {
 		model.addAttribute("newShip", new Ship());
 		model.addAttribute("nations", nationService.getAllNations());
+		model.addAttribute("shipTypes", shipTypeService.getAllShipTypes());
 		return "ships/add-ship";
 	}
 
