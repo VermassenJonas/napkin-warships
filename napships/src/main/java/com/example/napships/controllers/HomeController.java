@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 
-	@Autowired
-	private ShipService shipService;
 
 	@GetMapping("")
 	public String getHome(Model model) {
-		model.addAttribute("shipList", shipService.getAllShips());
 		return "home";
 	}
 }

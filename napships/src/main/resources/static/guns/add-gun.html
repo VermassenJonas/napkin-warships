@@ -19,34 +19,16 @@
 		</nav>
 	</header>
 	<main class="container">
-		<h1>Add new Ship</h1>
-		<form th:object="${newShip}" th:action="@{/ships/new}" th:method="POST">
-			<div class="row">
-
+		<h1>Add new Gun</h1>
+		<form th:object="${newGun}" th:action="@{/guns/new}" th:method="POST">
+			<div class="row" x-data="{caliberMm:0, caliberIn:0}">
 				<div class="col-auto g-3 mt-3 align-items-center">
-
-
-
-					<label for="shipNameInput" class="form-label">Ship Name</label>
-					<input type="text" class="form-control" id="shipNameInput" th:field="*{name}">
-					<label for="shipClassInput" class="form-label">Lead Ship</label>
-					<input type="text" class="form-control" id="shipClassInput" th:field="*{shipClass}">
-
-
+					<label for="caliberMmInput" class="form-label">Caliber (mm)</label>
+					<input th:field="*{caliber}" x-model.number="caliberMm" x-effect="caliberIn=caliberMm/25.4" type="number" step="0.1" class="form-control" id="caliberMmInput">
 				</div>
 				<div class="col-auto g-3 align-items-center">
-					<label for="shipTypeInput" class="form-label">Ship Type</label>
-					<select th:field="*{shipType}" id="shipTypeInput" class="form-select" aria-label="ship type">
-						<option th:each="shipType : ${shipTypes}" th:value="${shipType.id}" th:text="${shipType.name}">
-							Battleship</option>
-					</select>
-					<label for="shipDateInput" class="form-label">Date laid down</label>
-					<input type="date" class="form-control" id="shipDateInput" th:field="*{laidDownDate}">
-
-					<label for="shipNationInput" class="form-label">Nation</label>
-					<select th:field="*{nation}" id="shipNationInput" class="form-select" aria-label="nation">
-						<option th:each="nation : ${nations}" th:value="${nation.id}" th:text="${nation.name}">USA</option>
-					</select>
+					<label for="caliberInchInput" class="form-label">Caliber (inch)</label>
+					<input x-model.number="caliberIn" x-effect="caliberMm=caliberIn*25.4" type="number" step="0.01" class="form-control" id="caliberInchInput">
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary mt-3">Submit</button>
