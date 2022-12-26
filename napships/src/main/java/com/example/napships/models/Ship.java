@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +27,12 @@ public class Ship {
 	@ManyToOne
 	@JoinColumn(name = "nation_id")
 	private Nation nation;
+
+	@ManyToMany
+	@JoinTable(
+			name = "ship_gun",
+			joinColumns = @JoinColumn(name = "ship_id"),
+			inverseJoinColumns = @JoinColumn(name = "gun_id"))
+	private List<Gun> guns;
+
 }

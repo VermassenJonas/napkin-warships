@@ -13,7 +13,8 @@ insert into nation(id, name)	values (-4, "Japan")
 insert into nation(id, name)	values (-5, "Germany")
 insert into nation(id, name)	values (-6, "Italy")
 
-insert into gun(id, nation_id, caliber, barrel) values(-1,-1, "5 inch", "L/38" )
+insert into gun(id, nation_id, caliber, barrel) values(-1,-2, 120, 45 )
+insert into gun(id, nation_id, caliber, barrel) values(-2,-1, 127, 38 )
 
 insert into ship(id, nation_id, name, laid_down_date, ship_class, ship_type_id) values(-1,-1,	"Iowa", 			DATE '1938-11-22', "Iowa", -1)
 insert into ship(id, nation_id, name, laid_down_date, ship_class, ship_type_id) values(-2,-1,	"Missouri",		DATE '1939-11-22', "Iowa", -1)

@@ -15,20 +15,30 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-info">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="../home.html">NapShips</a>
-
 		</nav>
 	</header>
 	<main class="container">
 		<h1>Add new Gun</h1>
-		<form th:object="${newGun}" th:action="@{/guns/new}" th:method="POST">
+		<form novalidate th:object="${newGun}" th:action="@{/guns/new}" th:method="POST">
 			<div class="row" x-data="{caliberMm:0, caliberIn:0}">
 				<div class="col-auto g-3 mt-3 align-items-center">
 					<label for="caliberMmInput" class="form-label">Caliber (mm)</label>
 					<input th:field="*{caliber}" x-model.number="caliberMm" x-effect="caliberIn=caliberMm/25.4" type="number" step="0.1" class="form-control" id="caliberMmInput">
+					<label for="barrelInput" class="form-label">Barrel Length</label>
+					<input th:field="*{barrel}"  type="number" step="0.1" class="form-control" id="barrelInput">
+					<label for="gunDateInput" class="form-label">Date laid down</label>
+					<input type="number" class="form-control" id="gunDateInput" th:field="*{developedYear}">
+
 				</div>
 				<div class="col-auto g-3 align-items-center">
 					<label for="caliberInchInput" class="form-label">Caliber (inch)</label>
 					<input x-model.number="caliberIn" x-effect="caliberMm=caliberIn*25.4" type="number" step="0.01" class="form-control" id="caliberInchInput">
+					<label  class="form-label" for="gunNationInput">Nation</label>
+					<select th:remove="all-but-first" th:field="*{nation}" id="gunNationInput" class="form-select"
+						aria-label="nation">
+						<option th:each="nation : ${nations}" th:value="${nation.id}" th:text="${nation.name}">USA</option>
+						<option>CSA</option>
+					</select>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary mt-3">Submit</button>

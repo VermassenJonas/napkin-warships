@@ -21,7 +21,7 @@
 		</nav>
 	</header>
 	<main class="container">
-		<h1>Gun List <a class="btn btn-outline-primary" href="./add-gun.html" th:href="@{/ships/new}">Add New</a></h1>
+		<h1>Gun List <a class="btn btn-outline-primary" href="./add-gun.html" th:href="@{/guns/new}">Add New</a></h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -38,7 +38,7 @@
 					<td th:text="*{developedYear}">1932</td>
 					<td th:text="*{caliber/25.4}">4.7</td>
 					<td th:text="*{caliber}">120</td>
-					<td th:text="*{laidDownDate}">L/45</td>
+					<td th:text="*{barrel}">L/45</td>
 				</tr>
 			</tbody>
 		</table>

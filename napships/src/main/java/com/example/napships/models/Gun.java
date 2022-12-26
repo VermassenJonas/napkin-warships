@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Year;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,7 +20,10 @@ public class Gun {
 	@ManyToOne
 	@JoinColumn(name = "nation_id")
 	private Nation nation;
-	private String caliber;
-	private String barrel;
+	private double caliber;
+	private double barrel;
 	private Year developedYear;
+
+	@ManyToMany(mappedBy = "guns")
+	private List<Ship> ships;
 }
