@@ -1,6 +1,7 @@
 package com.example.napships.controllers;
 
 import com.example.napships.models.Ship;
+import com.example.napships.services.GunService;
 import com.example.napships.services.NationService;
 import com.example.napships.services.ShipService;
 import com.example.napships.services.ShipTypeService;
@@ -16,7 +17,8 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/ships")
 public class ShipController {
-
+	@Autowired
+	private GunService gunService;
 	@Autowired
 	private ShipService shipService;
 	@Autowired

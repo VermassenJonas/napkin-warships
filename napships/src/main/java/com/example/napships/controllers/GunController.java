@@ -6,10 +6,7 @@ import com.example.napships.services.NationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -37,5 +34,11 @@ public class GunController {
 	public RedirectView postNewGun(@ModelAttribute Gun gun, Model model){
 		gunService.addGun(gun);
 		return new RedirectView("/guns");
+	}
+
+
+	@GetMapping("/{nationId}")
+	public @ResponseBody Iterable<Gun> getGunsForNation(@PathVariable long nationId ){
+
 	}
 }

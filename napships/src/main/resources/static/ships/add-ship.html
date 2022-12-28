@@ -25,13 +25,17 @@
 
 				<div class="col-auto g-3 mt-3 align-items-center">
 
-
-
 					<label for="shipNameInput" class="form-label">Ship Name</label>
 					<input type="text" class="form-control" id="shipNameInput" th:field="*{name}">
 					<label for="shipClassInput" class="form-label">Class Name</label>
 					<input type="text" class="form-control" id="shipClassInput" th:field="*{shipClass}">
 
+					<label for="shipNationInput" class="form-label">Nation</label>
+					<select th:remove="all-but-first" th:field="*{nation}" id="shipNationInput" class="form-select"
+						aria-label="nation">
+						<option th:each="nation : ${nations}" th:value="${nation.id}" th:text="${nation.name}">USA</option>
+						<option>CSA</option>
+					</select>
 
 				</div>
 				<div class="col-auto g-3 align-items-center">
@@ -45,12 +49,15 @@
 					<label for="shipDateInput" class="form-label">Date laid down</label>
 					<input type="date" class="form-control" id="shipDateInput" th:field="*{laidDownDate}">
 
-					<label for="shipNationInput" class="form-label">Nation</label>
-					<select th:remove="all-but-first" th:field="*{nation}" id="shipNationInput" class="form-select"
-						aria-label="nation">
-						<option th:each="nation : ${nations}" th:value="${nation.id}" th:text="${nation.name}">USA</option>
-						<option>CSA</option>
-					</select>
+					
+					<label for="shipGunSelect" class="form-label">Guns on board</label>
+					<select th:field="*{guns}" th:remove="all-but-first" class="form-select" multiple aria-label="multiple select example" id="shipGunSelect">
+						<option th:each="gun : *{guns}" th:value="${gun.id}" th:text="|${gun.caliber}mm/${gun.barrel}|">5"/38</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					 </select>
+
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary mt-3">Submit</button>
