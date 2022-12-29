@@ -19,4 +19,9 @@ public class GunServiceImpl implements GunService {
 	public void addGun(Gun gun) {
 		gunRepository.save(gun);
 	}
+
+	@Override
+	public Iterable<Gun> getGunsByNation(long id) {
+		return gunRepository.findByNation_Id(id);
+	}
 }

@@ -6,4 +6,6 @@ public interface GunService {
 	Iterable<Gun> getAllGuns();
 
 	void addGun(Gun gun);
+
+	Iterable<Gun> getGunsByNation(long id);
 }
