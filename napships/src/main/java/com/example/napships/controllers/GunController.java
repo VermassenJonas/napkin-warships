@@ -37,8 +37,4 @@ public class GunController {
 	}
 
 
-	@GetMapping("/{nationId}")
-	public @ResponseBody Iterable<Gun> getGunsForNation(@PathVariable long nationId ){
-
-	}
 }
